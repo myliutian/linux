@@ -453,6 +453,7 @@ git remote add origin git@github.com:FBing/java-code-generator
 git fetch --all
 git reset --hard origin/master 
 git pull
+
 ```
 
 ### Kernel version and transparent huge page configuration
@@ -891,3 +892,22 @@ sudo service influxdb stop
 # 关闭Prometheus等：切换到tidb，source .bash_profile
 tiup cluster stop hands
 ```
+
+## New
+```sh
+# git遇到Failed to connect to github.com port 443 after 21090 ms: Couldn‘t connect to server
+## 挂了梯子
+1.查看本机系统端口号
+设置->网络和Internet->代理
+查看本机系统端口号
+2.设置git端口号和上面的端口号保持一致（我的是7890）
+git config --global http.proxy 127.0.0.1:7890
+git config --global https.proxy 127.0.0.1:7890
+
+# git遇到commit之后由于github100MB大小限制从而push失败，需要清理之前commit中的大文件
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch -r 要删除的文件" --prune-empty --tag-name-filter cat -- --all
+这句的意思是从遍历所有的commit，删除那个文件，重写历史commit
+```
+
+
+
