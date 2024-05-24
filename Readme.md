@@ -49,7 +49,7 @@ for i in {1..19};do ssh hadoop@n$i "cat /sys/devices/system/node/node*/meminfo |
 降低vscode到指定版本
 
 # 关闭vscode自动更新
-设置里搜索update关闭
+设置里搜索 Auto Check Updates 关闭
 ```
 
 
