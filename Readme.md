@@ -18,6 +18,12 @@ git filter-branch --force --index-filter "git rm --cached --ignore-unmatch -r �
 
 # git统计代码行数
 git ls-files | xargs wc -l
+
+# git撤销上一个commit
+git reset HEAD^
+
+# git取消上一次push
+git push --force origin <branch_name>
 ```
 
 ## 内存相关
