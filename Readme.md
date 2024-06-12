@@ -58,7 +58,16 @@ for i in {1..19};do ssh hadoop@n$i "cat /sys/devices/system/node/node*/meminfo |
 设置里搜索 Auto Check Updates 关闭
 ```
 
+## RDMA问题
 
+```sh
+# RDMA函数ibv_create_cq创建失败，提示malloc memory failed
+ulimit -a
+查看max locked memory应为unlimited，若为64则会ibv_create_cq失败
+解决方法
+sudo sh -c "ulimit -l unlimited && exec su $LOGNAME"
+
+```
 
 
 
