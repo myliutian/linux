@@ -24,6 +24,16 @@ git reset HEAD^
 
 # git取消上一次push
 git push --force origin <branch_name>
+
+# git比较两个branch版本差异
+git diff branch1 branch2
+
+# 比较摘要（文件差异）
+git diff --stat branch1 branch2
+
+# 比较具体文件差异
+git diff branch1 branch2 -- path/to/file
+
 ```
 
 ## 内存相关
