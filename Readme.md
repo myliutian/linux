@@ -40,7 +40,9 @@ git diff branch1 branch2 -- path/to/file
 ```sh
 # 设置大页内存页数
 sudo su
-echo 14336 > /proc/sys/vm/nr_hugepages
+echo 21504 > /proc/sys/vm/nr_hugepages
+echo 14400 > /proc/sys/vm/nr_hugepages
+echo 0 > /proc/sys/vm/nr_hugepages
 exit
 
 # 查看cpu占用状态
@@ -53,7 +55,10 @@ htop
 free -m
 
 # 整个集群执行
+
 for i in {1..19};do ssh hadoop@n$i "cat /sys/devices/system/node/node*/meminfo | grep -i huge";done
+
+cat /sys/devices/system/node/node*/meminfo | grep -i huge
 ```
 
 ## vscode问题
@@ -76,6 +81,23 @@ ulimit -a
 查看max locked memory应为unlimited，若为64则会ibv_create_cq失败
 解决方法
 sudo sh -c "ulimit -l unlimited && exec su $LOGNAME"
+
+```
+
+## screen
+
+```sh
+# 开启screen
+screen
+
+# 查找已有screen
+screen -ls
+
+# 关闭screen
+ctrlA + ctrlD
+
+# 
+
 
 ```
 
