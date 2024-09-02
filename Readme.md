@@ -101,6 +101,13 @@ ctrlA + ctrlD
 
 ```
 
+## 统计
+```sh
+# 统计文件夹下所有文件的总行数(包括此文件夹下所有文件夹内的迭代)
+find path-to-directory -type f -exec wc -l {} + | awk '{s+=$1} END {print s}'
+
+
+```
 
 
 
